@@ -1,0 +1,44 @@
+CREATE TABLE cad_empresa(
+cnpj VARCHAR (15) NOT null,
+nome varchar (50),
+endereco varchar (50),
+telefone int,
+nome_responsavel varchar (20),
+PRIMARY KEY (CNPJ)
+);
+  
+CREATE TABLE webdev(
+id_webdev varchar(10) NOT NULL,
+descricao varchar(50),
+carga_horaria INT,
+PRIMARY KEY (id_webdev)
+);
+    
+CREATE TABLE dados(
+id_dados varchar(10) NOT NULL,
+descricao varchar(50),
+carga_horaria INT,
+PRIMARY KEY (id_dados)
+);
+    
+CREATE TABLE marketing(
+id_marketing varchar(10) NOT NULL,
+descricao varchar(50),
+carga_horaria INT,
+PRIMARY KEY (id_marketing)
+);
+
+CREATE TABLE cad_tecnologias(
+id_cadastro int NOT NULL,
+PRIMARY KEY(id_cadastro),
+foreign key(id_webdev) REFERENCES webdev,
+foreign key(id_dados) REFERENCES dados,
+foreign key(id_marketing) REFERENCES marketing
+);
+
+CREATE TABLE relatorio(
+id_relatorio NUMERIC NOT NULL,
+FOREIGN key(cnpj) REFERENCES empresa_parceira(cnpj),
+FOREIGN KEY(id_cadastro) REFERENCES cad_tecnologia(id),
+data_pesq_empresa DATE
+);

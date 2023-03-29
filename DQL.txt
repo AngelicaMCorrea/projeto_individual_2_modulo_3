@@ -1,0 +1,21 @@
+SELECT id_empresa, COUNT(*) AS num_tecnologias
+FROM cad_tecnologias
+WHERE data_insercao = '2022-02-01'
+GROUP BY id_empresa
+ORDER BY num_tecnologias DESC
+LIMIT 1;
+
+SELECT id_empresa, COUNT(*) AS num_tecnologias
+FROM cad_tecnologias
+WHERE data_insercao = '2022-01-01'
+GROUP BY id_empresa
+ORDER BY num_tecnologias ASC
+LIMIT 1;
+
+SELECT COUNT(DISTINCT id_empresa) AS num_empresas
+FROM cad_tecnologias
+WHERE id_dados IS NOT NULL;
+
+SELECT COUNT(DISTINCT id_empresa) AS num_empresas
+FROM cad_tecnologias
+WHERE id_webdev IS NOT NULL OR id_marketing IS NOT NULL;
